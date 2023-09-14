@@ -28,3 +28,54 @@ Poiché é la parte logica ad interessarci in questa fase del corso, nello start
 Se finite la parte logica ed i vari bonus e vi avanza tempo per giocare un pó, pensate pure ad un layout differente e lavorateci su come bonus extra.
 Buon divertimento e buon weekend! Confermate lettura come al solito! 
  */
+
+const container = document.getElementById("container");
+
+const posts = [
+        {
+            "id" : 1,
+            "nomeAutore" : "autore1",
+            "fotoAutore" : "",
+            "data" : "09-01-2023",
+            "text" : "Post del primo autore",
+            "likes" :  3,
+        },
+        
+        {
+            "id" : 2,
+            "nomeAutore" : "autore2",
+            "fotoAutore" : "",
+            "data" : "02-05-2023",
+            "text" : "Post del secondo autore",
+            "likes" :  40,
+        },
+        
+        {
+            "id" : 3,
+            "nomeAutore" : "autore3",
+            "fotoAutore" : "",
+            "data" : "04-07-2023",
+            "text" : "Post del terzo autore",
+            "likes" :  54,
+
+        },
+        
+        {
+            "id" : 4,
+            "nomeAutore" : "autore4",
+            "fotoAutore" : null,
+            "data" : "11-03-2023",
+            "text" : "Post del quarto autore",
+            "likes" :  325,
+
+        },
+    ]  
+    
+    for(let i=0; i<posts.length;i++)
+    {
+        const post=posts[i];
+        container.innerHTML += generatePost(post);
+    }
+
+
+
