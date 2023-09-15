@@ -109,7 +109,7 @@ const posts = [
                         </a>
                     </div>
                     <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">${toPost.likes}</b> persone
+                        Piace a <b id="like-counter-${toPost.id}" class="js-likes-counter">${toPost.likes}</b> persone
                     </div>
                 </div> 
             </div>            
@@ -117,12 +117,17 @@ const posts = [
     }
 
     function like (){
-        const button = document.getElementsByClassName("like-button");
-        console.log(typeof button);
+        const button = document.querySelectorAll("a");
+        const likes = document.querySelectorAll("b");
+
         Object.keys(button).forEach(element => {
                 button[element].addEventListener("click", function(){
+                const likeCount = posts[element].likes;
+                if(button[element].classList.contains("like-button--liked"))
+                    likes[element].innerHTML = likeCount-1;
+                else
+                    likes[element].innerHTML = likeCount+1;
                 button[element].classList.toggle("like-button--liked");
-                console.log("ciao");
             }
         )
         }
