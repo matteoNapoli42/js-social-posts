@@ -78,10 +78,10 @@ const posts = [
     for(let i=0; i<posts.length;i++)
     {
         const post=posts[i];
-        container.innerHTML += generatePost(post);
+        container.innerHTML += generatePost(post,likedPosts);
     }
 
-    function generatePost(element){
+    function generatePost(element,arr){
         const toPost = element;
         return `
         <div class="post">
@@ -103,7 +103,7 @@ const posts = [
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                        <a class="like-button js-like-button" href="#" data-postid="${toPost.id}" onclick="like()">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
@@ -116,4 +116,16 @@ const posts = [
         </div>`;
     }
 
+    function like (){
+        const button = document.getElementsByClassName("like-button");
+        console.log(typeof button);
+        Object.keys(button).forEach(element => {
+                button[element].addEventListener("click", function(){
+                button[element].classList.toggle("like-button--liked");
+                console.log("ciao");
+            }
+        )
+        }
+        );
+    }
     
