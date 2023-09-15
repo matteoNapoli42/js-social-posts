@@ -31,33 +31,36 @@ Buon divertimento e buon weekend! Confermate lettura come al solito!
 
 const container = document.getElementById("container");
 
+const likedPosts = [3,4];
 const posts = [
         {
             "id" : 1,
             "nomeAutore" : "autore1",
-            "fotoAutore" : "",
+            "fotoAutore" : null,
             "data" : "09-01-2023",
             "text" : "Post del primo autore",
             "likes" :  3,
+            "image" : ""
         },
         
         {
             "id" : 2,
             "nomeAutore" : "autore2",
-            "fotoAutore" : "",
+            "fotoAutore" : null,
             "data" : "02-05-2023",
             "text" : "Post del secondo autore",
             "likes" :  40,
+            "image" : ""
         },
         
         {
             "id" : 3,
             "nomeAutore" : "autore3",
-            "fotoAutore" : "",
+            "fotoAutore" : null,
             "data" : "04-07-2023",
             "text" : "Post del terzo autore",
             "likes" :  54,
-
+            "image" : ""
         },
         
         {
@@ -67,6 +70,7 @@ const posts = [
             "data" : "11-03-2023",
             "text" : "Post del quarto autore",
             "likes" :  325,
+            "image" : ""
 
         },
     ]  
@@ -77,5 +81,39 @@ const posts = [
         container.innerHTML += generatePost(post);
     }
 
+    function generatePost(element){
+        const toPost = element;
+        return `
+        <div class="post">
+            <div class="post__header">
+                <div class="post-meta">                    
+                    <div class="post-meta__icon">
+                        ${toPost.fotoAutore}                   
+                    </div>
+                    <div class="post-meta__data">
+                        <div class="post-meta__author">${toPost.nomeAutore}</div>
+                        <div class="post-meta__time">${toPost.data}</div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="post__text">${toPost.text}</div>
+            <div class="post__image">
+                ${toPost.image}
+            </div>
+            <div class="post__footer">
+                <div class="likes js-likes">
+                    <div class="likes__cta">
+                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                            <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                            <span class="like-button__label">Mi Piace</span>
+                        </a>
+                    </div>
+                    <div class="likes__counter">
+                        Piace a <b id="like-counter-1" class="js-likes-counter">${toPost.likes}</b> persone
+                    </div>
+                </div> 
+            </div>            
+        </div>`;
+    }
 
-
+    
